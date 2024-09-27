@@ -29,3 +29,15 @@ print("Волшебники данных решили задачи за {} с !"
 print(f"Команды решили {str(score_1)} и {str(score_2)} задач.")
 print(f"Результат битвы: {challenge_result}")
 print(f"Сегодня было решено {str(tasks_total)} задач, в среднем по {str(time_avg)} секунды на задачу!.")
+
+directory = "."
+for root, dirs, files in os.walk(directory):
+    for file in files:
+        filepath = os.path.join(root, file)
+        filetime = os.path.getmtime(filepath)
+        filesize = os.path.getsize(filepath)
+        parent_dir = os.path.dirname(filepath)
+        formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
+        print(
+            f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: '
+            f'{formatted_time}, Родительская директория: {parent_dir}')
